@@ -22,27 +22,8 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
-    new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
-      chunkFilename: "[id].[contenthash].css",
-    }),
   ],
   module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        // use: ["style-loader", "css-loader"],
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: "../",
-              hmr: process.env.NODE_ENV === "development",
-            },
-          },
-          "css-loader",
-        ],
-      },
-    ],
+    rules: [{}],
   },
 };
