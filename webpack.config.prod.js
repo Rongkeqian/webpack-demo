@@ -1,35 +1,23 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
+const base = require("./webpack.config.base");
 
 module.exports = {
-  publicPath: "../",
+  ...base,
   mode: "production",
-  entry: "./src/index.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].[contenthash].js",
-  },
-  devtool: "inline-source-map",
-  devServer: {
-    contentBase: "./dist",
-  },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: "My App Rong",
-      template: "src/assets/index.html",
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
-    }),
+    //提取css的插件
+    ...base.plugins,
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
       chunkFilename: "[id].[contenthash].css",
+      ignoreOrder: false,
     }),
   ],
   module: {
     rules: [
+      ...base.module.rules,
       {
         test: /\.css$/i,
         use: [

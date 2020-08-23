@@ -3,7 +3,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = {
-  mode: "development",
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -15,15 +14,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "My App Rong",
+      title: "写代码啦",
       template: "src/assets/index.html",
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
     }),
   ],
   module: {
-    rules: [{}],
+    rules: [],
   },
 };
